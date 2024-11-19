@@ -6,9 +6,7 @@
    font-family: "Roboto", sans-serif;
 }
 :root{
-   --main-color{
-      color: #e2d51f;
-   }
+   --main-color: #f37703;
 }
 header{
    display: flex;
@@ -21,9 +19,10 @@ header{
    right: 0;
    padding: 5px;
    box-shadow: 0px 3px 5px #e7e7e7;
+   background-color: #fff;
 }
 .logo img{
-   width: 120px;
+   width: 100px;
    margin-bottom: -25px;
 }
 header nav{
@@ -33,7 +32,7 @@ nav a{
    color: #000;
    text-decoration: none;
    font-size: 17px;
-   padding: 5px 10px;
+   padding: 3px 10px;
    margin: 0 10px;
    position: relative;
    display: inline-block;
@@ -45,10 +44,75 @@ nav a::after{
    height: 2px;
    bottom: 0;
    left: 50%;
-   background-color: #e2d51f;
+   background-color: var(--main-color);
    transition: 0.3s ease-in-out;
 }
 nav a:hover::after{
    width: 100%;
    left: 0;
+}
+
+.banner{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 0 50px;
+   width: 1100px;
+   margin: 0 auto;
+   height: calc(100vh);
+}
+.banner-left{
+   flex: 1;
+}
+.banner-right{
+   flex: 1;
+   width: 90%;
+}
+.banner-right img{
+   width: inherit
+}
+.banner-left h1{
+   font-size: 50px;
+   font-weight: bold;
+   -webkit-text-stroke-width: 1px;
+   -webkit-text-stroke-color: #000;
+   color: var(--main-color);
+}
+.banner-left h2{
+   font-size: 33px;
+   font-weight: 400;
+}
+.banner-left p{
+   font-size: 17px;
+   font-weight: 300;
+}
+
+.arrow-area{
+   display: flex;
+   justify-content: start;
+   align-items: center;
+   margin: 5px 20px;
+}
+.arrow-area span{
+   width: 5px;
+   height: 40px;
+   margin: 14px;
+   border-radius: 5px;
+   background-color: #555;
+   transition: 0.3s ease-in-out;
+   position: relative;
+}
+.arrow-area span:nth-of-type(1){
+   transform: rotate(-70deg);
+}
+.arrow-area span:nth-of-type(2){
+   transform: rotate(70deg);
+}
+.arrow-area:hover span:nth-of-type(1){
+   transform: rotate(-60deg) translateY(1px);
+   background-color: var(--main-color);
+}
+.arrow-area:hover span:nth-of-type(2){
+   transform: rotate(60deg) translateY(1px);
+   background-color: var(--main-color);
 }
