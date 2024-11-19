@@ -11,6 +11,15 @@
 html{
    scroll-behavior: smooth;
 }
+::-webkit-scrollbar {
+   width: 10px;
+}
+::-webkit-scrollbar-thumb{
+   background: #f37703;
+}
+::-webkit-scrollbar-track{
+   background: #fff;
+}
 header{
    display: flex;
    justify-content: center;
@@ -58,31 +67,45 @@ nav a:hover::after{
 main{
    background-color: #f5f5f5;
 }
-.banner{
+#home{
    display: flex;
    justify-content: center;
    align-items: center;
    padding: 0 50px;
-   width: 1100px;
+   width: 100%;
    margin: 0 auto;
-   height: calc(100vh - 100px);
+   height: 100vh;
    border-bottom: 1px solid #ccc;
+   background: url(../images/background.jpg);
+   background-position: center;
+   background-size: cover;
+   background-repeat: no-repeat;
 }
 .banner-left{
-   flex: 1;
+   width: 40%;
 }
 .banner-right{
-   flex: 1;
-   width: 90%;
+   width: 40%;
 }
 .banner-right img{
-   width: inherit
+   width: 80%;
+   object-fit: cover;
+   animation: moving 2s infinite;
+}
+@keyframes moving{
+   0%{
+      transform: translateY(0px);
+   }
+   50%{
+      transform: translateY(7px);
+   }
+   100%{
+      transform: translateY(0px);
+   }
 }
 .banner-left h1{
    font-size: 55px;
    font-weight: bold;
-   -webkit-text-stroke-width: 1px;
-   -webkit-text-stroke-color: #000;
    color: var(--main-color);
 }
 .banner-left h2{
@@ -199,7 +222,7 @@ main{
    font-size: 14px;
    color: #555;
 }
-.cloneNode-hidden{
+.hidden-content{
    display: none;
 }
 footer{
@@ -234,3 +257,157 @@ footer a:hover::after{
    width: 100%;
    left: 0;
 }
+
+.pizzaWindowArea {
+   position: fixed;
+   left: 0;
+   top: 0;
+   bottom: 0;
+   right: 0;
+   background-color: var(--main-color);
+   display: none;
+   transition: all ease 0.5s;
+   justify-content: center;
+   align-items: center;
+   overflow-y: auto;
+   z-index: 99;
+ }
+ .pizzaWindowBody {
+   width: 900px;
+   background-color: var(--main-color);
+   border-radius: 10px;
+   box-shadow: 0px 10px 25px #555;
+   display: flex;
+   margin: 20px 0px;
+ }
+ .pizzaWindowBody.modal {
+   padding: 10px 50px;
+ }
+ .pizzaBig {
+   flex: 1;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+ 
+}
+.pizzaBig img {
+  height: 350px;
+  width: auto;
+}
+ .pizzaBig--back {
+   position: absolute;
+   width: 30px;
+   height: 30px;
+   background-color: var(--main-color);
+ }
+ .pizzaInfo {
+   flex: 1;
+   padding-bottom: 50px;
+ 
+}
+.pizzaInfo h1 {
+  margin-top: 50px;
+}
+
+.pizzaInfo--desc {
+  font-size: 15px;
+  color: #777;
+  margin-top: 10px;
+  width: 90%;
+}
+ .pizzaInfo--sector {
+   color: #000;
+   text-transform: uppercase;
+   font-size: 14px;
+   margin-top: 30px;
+   margin-bottom: 10px;
+ }
+ .pizzaInfo--sizes {
+   display: inline-flex;
+   border-radius: 10px;
+   overflow: hidden;
+ }
+ .pizzaInfo--size {
+   padding: 10px 15px;
+   color: var(--main-color);
+   background-color: #f37703;
+   font-size: 13px;
+   font-weight: bold;
+   cursor: pointer;
+   transition: all 0.3s;
+ 
+}
+.pizzaInfo--size:hover {
+  background-color: #e4e4e4;
+}
+.pizzaInfo--size span {
+  font-size: 12px;
+  color: #fff;
+  font-weight: normal;
+}
+ .pizzaInfo--size.selected {
+   background-color: #000;
+   color: #fff;
+ 
+}
+.pizzaInfo--sizespan {
+  color: #fff;
+}
+ .pizzaInfo--price {
+   display: flex;
+   align-items: center;
+ }
+ .pizzaInfo--actualPrice {
+   font-size: 28px;
+   width: 30%;
+   margin-right: 30px;
+ }
+ .pizzaInfo--qtarea {
+   display: inline-flex;
+   background-color: var(--main-color);
+   border-radius: 10px;
+   height: 30px;
+ 
+}
+.pizzaInfo-qtarea button {
+  border: 0;
+  background-color: transparent;
+  font-size: 17px;
+  outline: 0;
+  cursor: pointer;
+  padding: 0px 10px;
+  color: #fff;
+}
+ .pizzaInfo--qt {
+   line-height: 30px;
+   font-size: 12px;
+   font-weight: bold;
+   padding: 0px 5px;
+   color: #000;
+ }
+ .pizzaInfo--addButton {
+   margin-top: 30px;
+   padding: 20px 30px;
+   border-radius: 20px;
+   background-color: var(--main-color);
+   color: #000;
+   display: inline-block;
+   cursor: pointer;
+   margin-right: 30px;
+   transition: all 0.3s;
+ }
+ .pizzaInfo--addButton:hover {
+   background-color: #555;
+ }
+ .pizzaInfo--cancelButton {
+   display: inline-block;
+   cursor: pointer;
+ }
+ .pizzaInfo--cancelMobileButton {
+   display: none;
+   height: 40px;
+   line-height: 40px;
+   margin-bottom: 5px;
+   color: #000;
+   font-weight: bold;
+ }

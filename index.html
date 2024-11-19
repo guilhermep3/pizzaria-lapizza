@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
    <meta charset="UTF-8">
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,12 +8,13 @@
    <title>LAPIZZA</title>
    <link rel="shortcut icon" href="src/images/logo-lapizza.png" type="image/x-icon">
 </head>
+
 <body>
    <header>
       <nav>
          <ul>
-            <a href="">HOME</a>
-            <a href="">CARDÁPIO</a>
+            <a href="#home">HOME</a>
+            <a href="#menu">CARDÁPIO</a>
          </ul>
       </nav>
       <div class="logo">
@@ -26,7 +28,7 @@
       </nav>
    </header>
    <main>
-      <section class="banner">
+      <section id="home">
          <div class="banner-left">
             <h1>LaPizza</h1>
             <h2>10% de desconto</h2>
@@ -42,20 +44,61 @@
       </section>
       <section id="menu">
          <h1>Cardápio</h1>
-         <h2>Total de 15 pizzas</h2>
+         <h2>Total de -- pizzas</h2>
          <div class="pizza-area">
             <!-- pizzas.js -->
          </div>
       </section>
-      <section class="cloneNode-hidden">
-            <div class="pizza">
-               <img src="src/images/pizzas/4queijos.png" alt="" class="pizza-img">
-               <button class="add-pizza">+</button>
-               <p class="pizza-name"></p>
-               <p class="pizza-price"></p>
-               <p class="pizza-desc"></p>
-            </div>
+      <section class="hidden-content">
+         <div class="pizza">
+            <img class="pizza-img" src="" alt="">
+            <button class="add-pizza">+</button>
+            <p class="pizza-name"></p>
+            <p class="pizza-price"></p>
+            <p class="pizza-desc"></p>
+         </div>
       </section>
+      <div class="pizzaWindowArea">
+         <div class="pizzaWindowBody modal">
+            <div class="pizzaInfo--cancelMobileButton">
+               <i class="fa-solid fa-arrow-left"></i>
+            </div>
+            <div class="pizzaBig">
+               <img src="" />
+            </div>
+            <div class="pizzaInfo">
+               <h1>--</h1>
+               <div class="pizzaInfo--desc">--</div>
+               <div class="pizzaInfo--sizearea">
+                  <div class="pizzaInfo--sector">Tamanho</div>
+                  <div class="pizzaInfo--sizes">
+                     <div data-key="0" class="pizzaInfo--size">
+                        PEQUENA <span>--</span>
+                     </div>
+                     <div data-key="1" class="pizzaInfo--size">
+                        MÉDIO <span>--</span>
+                     </div>
+                     <div data-key="2" class="pizzaInfo--size selected">
+                        GRANDE <span>--</span>
+                     </div>
+                  </div>
+               </div>
+               <div class="pizzaInfo--pricearea">
+                  <div class="pizzaInfo--sector">Preço</div>
+                  <div class="pizzaInfo--price">
+                     <div class="pizzaInfo--actualPrice">R$ --</div>
+                     <div class="pizzaInfo--qtarea">
+                        <button class="pizzaInfo--qtmenos">-</button>
+                        <div class="pizzaInfo--qt">1</div>
+                        <button class="pizzaInfo--qtmais">+</button>
+                     </div>
+                  </div>
+               </div>
+               <div class="pizzaInfo--addButton">Adicionar ao carrinho</div>
+               <div class="pizzaInfo--cancelButton" onclick="closeModal()">Cancelar</div>
+            </div>
+         </div>
+      </div>
    </main>
    <footer>
       <a href="https://github.com/guilhermep3" target="_blank">© created by Guilherme Pereira</a>
@@ -64,4 +107,5 @@
    <script src="src/js/pizzas.js"></script>
    <script src="src/js/script.js"></script>
 </body>
+
 </html>
