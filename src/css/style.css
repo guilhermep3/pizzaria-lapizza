@@ -5,7 +5,11 @@
    box-sizing: border-box;
    font-family: "Roboto", sans-serif;
 }
-
+:root{
+   --main-color{
+      color: #e2d51f;
+   }
+}
 header{
    display: flex;
    justify-content: center;
@@ -15,10 +19,12 @@ header{
    top: 0;
    left: 0;
    right: 0;
+   padding: 5px;
    box-shadow: 0px 3px 5px #e7e7e7;
 }
 .logo img{
-   width: 100px;
+   width: 120px;
+   margin-bottom: -25px;
 }
 header nav{
    padding: 0 50px;
@@ -27,18 +33,22 @@ nav a{
    color: #000;
    text-decoration: none;
    font-size: 17px;
-   padding: 0 20px;
+   padding: 5px 10px;
+   margin: 0 10px;
+   position: relative;
+   display: inline-block;
 }
 nav a::after{
    content: "";
    position: absolute;
-   width: 0%;
-   height: 3px;
+   width: 0;
+   height: 2px;
    bottom: 0;
-   left: 0;
-   background-color: #000;
+   left: 50%;
+   background-color: #e2d51f;
    transition: 0.3s ease-in-out;
 }
-nav a:hover ::after{
+nav a:hover::after{
    width: 100%;
+   left: 0;
 }
