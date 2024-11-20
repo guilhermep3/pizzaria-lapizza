@@ -145,18 +145,23 @@ main {
    transform: rotate(60deg) translateY(1px);
    background-color: var(--main-color);
 }
-#menu {
+
+#menu{
+   display: flex;
+   justify-content: center;
+}
+.menu-area {
    max-width: 1200px;
    padding: 20px 10px;
    margin: 0 auto;
    text-align: center;
 }
-#menu h1 {
+.menu-area h1 {
    font-size: 30px;
    font-weight: 400;
    margin-bottom: 5px;
 }
-#menu h2 {
+.menu-area h2 {
    font-size: 17px;
    font-weight: 300;
    margin-bottom: 30px;
