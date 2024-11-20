@@ -18,6 +18,9 @@ pizzas.map((item, index) => {
 
    pizzaDiv.addEventListener('click', (e) => {
       let key = e.target.closest('.pizza').getAttribute('data-key');
+      modalQt = 1;
+      modalKey = key; // Pizza aberta no modal
+
       qs('.pizzaInfo h1').innerHTML = pizzas[key].name;
       qs('.pizza-img-modal img').src = `src/images/${pizzas[key].img}`;
       qs('.pizzaInfo--desc').innerHTML = pizzas[key].description;
@@ -36,18 +39,16 @@ pizzas.map((item, index) => {
          size.addEventListener('click', () => {
             document.querySelector('.pizzaInfo--size.selected').classList.remove('selected');
             size.classList.add('selected');
-
+            
+            // Atualiza o preço atual conforme o tamanho
             modalQt = 1;
             document.querySelector(".pizzaInfo--qt").innerHTML = modalQt;
-            document.querySelector(
-               ".pizzaInfo--actualPrice"
-             ).innerHTML = ` ${pizzas[key].price[sizeIndex].toLocaleString(
-               "pt-br",
-               { style: "currency", currency: "BRL" }
-             )}`;
-         })
+            document.querySelector(".pizzaInfo--actualPrice").innerHTML = `${pizzas[key].price[sizeIndex].toLocaleString(
+               "pt-br", { style: "currency", currency: "BRL" }
+            )}`;
+         });
       });
-
+      document.querySelector(".pizzaInfo--qt").innerHTML = modalQt;
 
       qs('.pizzaWindowArea').style.opacity = 0;
       qs('.pizzaWindowArea').style.display = 'flex';
@@ -57,10 +58,36 @@ pizzas.map((item, index) => {
       }, 100);
    })
 });
-function closeModal() {
+
+// Eventos do modal
+function closeModal(){
    qs('.pizzaWindowArea').style.opacity = 0;
    qs('.pizzaWindowBody').style.marginTop = '-200px';
    setTimeout(() => {
       qs('.pizzaWindowArea').style.display = 'none';
-   }, 100);
+   }, 300);
 }
+document.querySelectorAll('.pizzaInfo--cancelButton, .pizzaInfo--cancelMobileButton').forEach((item)=>{
+   item.addEventListener('click', closeModal)
+});
+document.querySelector('.pizzaInfo--qtmenos').addEventListener('click', () => {
+   if(modalQt > 1){
+      modalQt--;
+      document.querySelector(".pizzaInfo--qt").innerHTML = modalQt;
+      let size = document.querySelector('.pizzaInfo--size.selected').getAttribute('data-key');
+      let actualPrice = pizzas[modalKey].price[size];
+      let updatePrice = actualPrice * modalQt;
+      qs('.pizzaInfo--actualPrice').innerHTML = updatePrice.toLocaleString('pt-BR', 
+         {style: 'currency', currency: 'BRL',});
+   }
+});
+
+document.querySelector('.pizzaInfo--qtmais').addEventListener('click', () => {
+   modalQt++;
+   document.querySelector(".pizzaInfo--qt").innerHTML = modalQt;
+   let size = document.querySelector('.pizzaInfo--size.selected').getAttribute('data-key');
+   let actualPrice = pizzas[modalKey].price[size];
+   let updatePrice = actualPrice * modalQt;
+   qs('.pizzaInfo--actualPrice').innerHTML = updatePrice.toLocaleString('pt-BR', 
+      {style: 'currency', currency: 'BRL',});
+});
