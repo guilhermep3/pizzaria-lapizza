@@ -91,3 +91,13 @@ document.querySelector('.pizzaInfo--qtmais').addEventListener('click', () => {
    qs('.pizzaInfo--actualPrice').innerHTML = updatePrice.toLocaleString('pt-BR', 
       {style: 'currency', currency: 'BRL',});
 });
+
+// Card
+qs('.pizzaInfo--addButton').addEventListener('click', () =>{
+   qs('aside').classList.toggle('show');
+})
+qs('.cart-finish').addEventListener('click', () => {
+   let size = document.querySelector('.pizzaInfo--size.selected').getAttribute('data-key');
+   let identifier = pizzas[modalKey].id+'@'+size;
+   let key = cart.findIndex((item)=>item.identifier === identifier);
+});
