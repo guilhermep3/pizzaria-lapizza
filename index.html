@@ -6,9 +6,10 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <link rel="stylesheet" href="src/css/style.css">
    <link rel="stylesheet" href="src/css/cart.css">
+   <link rel="stylesheet" href="src/css/responsivity.css">
    <title>LAPIZZA</title>
    <link rel="shortcut icon" href="src/images/logo-lapizza.png" type="image/x-icon">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 
 <body>
@@ -59,7 +60,7 @@
                </div>
                <h1>Suas Pizzas</h1>
                <div class="cart">
-                  
+                  <!-- js -->
                </div>
                <div class="cart-details">
                   <div class="cart-totalitem subtotal">
@@ -89,18 +90,18 @@
          </div>
          <div class="cart-item">
             <img src="" />
-            <div class="cart--item-nome">--</div>
-            <div class="cart--item--qtarea">
-               <button class="cart--item-qtmenos">-</button>
-               <div class="cart--item--qt">1</div>
-               <button class="cart--item-qtmais">+</button>
+            <div class="cart-item-nome">--</div>
+            <div class="cart-item-qtarea">
+               <button class="cart-item-qtmenos">-</button>
+               <div class="cart-item-qt">1</div>
+               <button class="cart-item-qtmais">+</button>
             </div>
          </div>
       </section>
       <div class="pizzaWindowArea">
          <div class="pizzaWindowBody modal">
             <div class="pizzaInfo--cancelMobileButton">
-               <i class="fa-solid fa-arrow-left"></i>
+               <i class="bi bi-arrow-left"></i>
             </div>
             <div class="pizza-img-modal">
                <img src="" />
@@ -134,7 +135,17 @@
                   </div>
                </div>
                <div class="pizzaInfo--addButton">Adicionar ao carrinho</div>
-               <div class="pizzaInfo--cancelButton" onclick="closeModal()">Cancelar</div>
+               <div class="pizzaInfo--cancelButton">Cancelar</div>
+            </div>
+         </div>
+      </div>
+      <div class="finish-modal">
+         <div class="finish-modal-area">
+            <i class="bi bi-patch-check-fill"></i>
+            <div class="finish-text">
+               <h1>Seu pedido foi finalizado!</h1>
+               <p>Prazo de entrega de 30 minutos.</p>
+               <button>Confirmar</button>
             </div>
          </div>
       </div>
