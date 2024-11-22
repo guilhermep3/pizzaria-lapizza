@@ -12,7 +12,7 @@ aside.show{
 }
 .cart-area {
    background-color: #fff;
-   padding: 20px;
+   padding: 20px 25px;
    border-radius: 10px;
    border: 1px solid var(--main-color);
 }
@@ -21,6 +21,9 @@ aside.show{
 }
 .menu-closer {
    display: none;
+   font-size: 30px;
+   color: var(--main-color);
+   padding: 5px;
 }
 .cart-item {
    display: flex;

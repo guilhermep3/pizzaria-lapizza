@@ -1,9 +1,12 @@
 @media screen and (max-width: 768px){
+   .mobile-header{
+      display: flex;
+   }
    header{
       justify-content: space-between;
    }
    .logo img {
-      width: 70px;
+      width: 60px;
       margin-bottom: 0;
    }
    header nav{
@@ -14,27 +17,105 @@
    }
    #home{
       flex-direction: column;
+      height: 100%;
+      padding-top: 100px;
+      padding-bottom: 50px;
+   }
+   .banner-left h1 {
+      font-size: 40px;
+   }
+   .banner-left h2 {
+      font-size: 30px;
    }
    .pizza{
-      width: 160px;
+      width: 150px;
       height: 300px;
-      margin: 10px;
+      margin: 5px;
    }
    .pizza-img{
-      width: 140px;
+      width: 120px;
    }
    .add-pizza {
       width: 44px;
       height: 44px;
+      margin-top: -20px;
    }
    .pizza-name {
       font-size: 17px;
    }
    .pizza-price {
-      font-size: 15px;
-      margin: 7px 0;
+      font-size: 14px;
+      margin: 5px 0;
    }
    .pizza-desc {
+      font-size: 12px;
+   }
+   .pizzaInfo--cancelMobileButton{
+      display: flex;
+   }
+   .pizzaInfo--cancelButton{
+      display: none;
+   }
+   .pizzaWindowBody{
+      flex-direction: column;
+      height: 100vh;
+   }
+   .pizza-img-modal img {
+      height: 200px;
+   }
+   .pizzaInfo h1 {
+      font-size: 25px;
+      margin-top: 10px;
+   }
+   .pizzaInfo--desc {
+      font-size: 14px;
+   }
+   .pizzaInfo--price{
+      justify-content: space-between;
+   }
+   .pizzaInfo--sector{
       font-size: 13px;
+      margin-top: 15px;
+   }
+   .pizzaInfo--addButton{
+      width: 100%;
+      text-align: center;
+   }
+   aside{
+      position: fixed;
+      left: 100vw;
+      right: 0;
+      top: 70px;
+      bottom: 0;
+      z-index: 50;
+      height: 100vh;
+   }
+   aside.show{
+      margin: 0;
+      width: 100%;
+      left: 0;
+   }
+   .menu-closer {
+      display: block;
+   }
+   .cart-area{
+      width: 100vw;
+      height: 100vh;
+   }
+   .finish-modal-area{
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      margin: 10px;
+   }
+   .finish-modal-area i {
+      margin: 0;
+   }
+   .finish-text h1{
+      font-size: 22px;
+   }
+   .finish-text p{
+      font-size: 16px;
    }
 }

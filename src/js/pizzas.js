@@ -85,7 +85,7 @@ const pizzas = [
     "img": "pizzas/chocolate-c-mm.png",
     "price": [14.5, 22.99, 32.99],
     "sizes": ["320g", "530g", "860g"],
-    "description": "Chocolate e M&M's."
+    "description": "Chocolate e M&M's, massa doce."
   },
   {
     "id": 12,

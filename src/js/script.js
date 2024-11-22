@@ -115,6 +115,7 @@ qs('.pizzaInfo--addButton').addEventListener('click', () => {
 })
 
 function updateCart() {
+   qs('.cart-mobile span').innerHTML = cart.length;
    if (cart.length > 0) {
       qs('aside').classList.add('show');
       qs('.cart').innerHTML = '';
@@ -176,11 +177,18 @@ function updateCart() {
 
 document.querySelector('.cart-finish').addEventListener('click', () => {
    qs('.finish-modal').style.display = 'flex';
-})
+});
 qs('.finish-text button').addEventListener('click', () => {
    qs('.finish-modal').style.display = 'none';
-})
-
+});
 qs('.menu-mobile').addEventListener('click', () => {
-   qs('.nav-mobile').classList.toggle('.show-mobile');
+   qs('.nav-mobile').classList.toggle('show-mobile');
+});
+qs('.cart-mobile').addEventListener('click', () => {
+   if(cart.length > 0){
+      qs('aside').classList.add('show');
+   }
+});
+qs('.menu-closer').addEventListener('click', () => {
+   qs('aside').classList.remove('show');
 })
