@@ -180,3 +180,7 @@ document.querySelector('.cart-finish').addEventListener('click', () => {
 qs('.finish-text button').addEventListener('click', () => {
    qs('.finish-modal').style.display = 'none';
 })
+
+qs('.menu-mobile').addEventListener('click', () => {
+   qs('.nav-mobile').classList.toggle('.show-mobile');
+})
