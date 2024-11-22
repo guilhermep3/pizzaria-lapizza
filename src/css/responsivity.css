@@ -1,3 +1,16 @@
+@media screen and (max-width: 1080px){
+   .pizzaWindowBody {
+      width: 90%;
+   }
+   .pizza-img-modal img{
+      height: 300px;
+      margin-right: 20px;
+   }
+   .pizzaInfo--addButton{
+      padding: 15px;
+   }
+}
+
 @media screen and (max-width: 768px){
    .mobile-header{
       display: flex;
@@ -29,7 +42,7 @@
    }
    .pizza{
       width: 150px;
-      height: 300px;
+      height: 290px;
       margin: 5px;
    }
    .pizza-img{
@@ -50,8 +63,13 @@
    .pizza-desc {
       font-size: 12px;
    }
+   .pizza-img-modal{
+      flex: 0;
+      margin: 10px;
+   }
    .pizzaInfo--cancelMobileButton{
       display: flex;
+      margin-top: 30px;
    }
    .pizzaInfo--cancelButton{
       display: none;
@@ -117,5 +135,12 @@
    }
    .finish-text p{
       font-size: 16px;
+   }
+}
+@media screen and (max-width: 440px){
+   .pizza{
+      width: 45%;
+      height: 290px;
+      margin: 5px;
    }
 }

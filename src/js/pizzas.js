@@ -21,7 +21,7 @@ const pizzas = [
     "img": "pizzas/brocolis-com-catupiry.png",
     "price": [14.5, 22.99, 24.99],
     "sizes": ["320g", "530g", "860g"],
-    "description": "Molho, muçarela, brócolis refogado com azeite de oliva e alho, catupiry e orégano."
+    "description": "Molho, muçarela, brócolis refogado com azeite, alho, e catupiry."
   },
   {
     "id": 4,
@@ -45,7 +45,7 @@ const pizzas = [
     "img": "pizzas/chocolate.png",
     "price": [14.5, 24.99, 29.99],
     "sizes": ["320g", "530g", "860g"],
-    "description": "Chocolate ao leite."
+    "description": "Chocolate ao leite. meio amargo"
   },
   {
     "id": 7,
