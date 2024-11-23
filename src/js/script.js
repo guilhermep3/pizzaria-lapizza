@@ -96,28 +96,30 @@ document.querySelector('.pizzaInfo--qtmais').addEventListener('click', () => {
 
 // Cart
 qs('.pizzaInfo--addButton').addEventListener('click', () => {
-   if(canAdd){
+   if (canAdd) {
       let size = document.querySelector('.pizzaInfo--size.selected').getAttribute('data-key');
       let identifier = pizzas[modalKey].id + '@' + size;
+      //console.log(pizzas[modalKey].id + '@' + size)
       let key = cart.findIndex((item) => item.identifier == identifier);
-   
-      if (key > -1) {
-         cart[key].qt += modalKey;
+      console.log(key)
+      if (key >= 0) {
+         cart[key].qt += modalQt;
       } else {
          cart.push({
+            identifier,
             id: pizzas[modalKey].id,
             size,
             qt: modalQt
          });
       };
-   
+
       updateCart();
       closeModal();
-      document.querySelector('#menu').scrollIntoView({behavior: 'smooth'});
+      document.querySelector('#menu').scrollIntoView({ behavior: 'smooth' });
    } else {
       alert('Pedido já feito, cancele antes de adicionar mais.')
    }
-})
+});
 
 function updateCart() {
    qs('.cart-mobile span').innerHTML = cart.length;
@@ -154,17 +156,18 @@ function updateCart() {
          cartDiv.querySelector('.cart-item-nome').innerHTML = pizzaName;
          cartDiv.querySelector('.cart-item-qt').innerHTML = cart[i].qt;
          cartDiv.querySelector('.cart-item-qtmenos').addEventListener('click', () => {
-            if(cartBtn){
-               if(cart[i].qt > 1){
-                  cart[i].qt --;
+            if (cartBtn) {
+               if (cart[i].qt > 1) {
+                  cart[i].qt--;
                } else {
                   cart.splice(i, 1);
+                  qs('.payments').style.display = 'none';
                }
                updateCart();
             }
          })
          cartDiv.querySelector('.cart-item-qtmais').addEventListener('click', () => {
-            if(cartBtn){
+            if (cartBtn) {
                cart[i].qt++
                updateCart();
             }
@@ -174,19 +177,17 @@ function updateCart() {
       }
       desconto = subtotal * 0.1;
       total = subtotal - desconto;
-      
+
       qs('.subtotal span:last-child').innerHTML = `R$ ${subtotal.toFixed(2)}`;
       qs('.desconto span:last-child').innerHTML = `R$ ${desconto.toFixed(2)}`;
       qs('.total span:last-child').innerHTML = `R$ ${total.toFixed(2)}`;
-      qsa('.payment').forEach((item) => {
-         item.style.display = 'block';
-      })
+      qs('.payments').style.display = 'flex';
    } else {
       qs('aside').classList.remove('show');
    }
 };
 
-function oderPlaced(){
+function oderPlaced() {
    qs('.subtotal').style.display = 'none';
    qs('.desconto').style.display = 'none';
    qs('.finish-msg').style.display = 'flex';
@@ -195,7 +196,14 @@ function oderPlaced(){
 };
 
 document.querySelector('.cart-finish').addEventListener('click', () => {
-   qs('.finish-modal').style.display = 'flex';
+   let havePS = Array.from(qsa('.payment')).some((item) => {
+      return item.classList.contains('paySelected');
+   });
+   if (havePS) {
+      qs('.finish-modal').style.display = 'flex';
+   } else {
+      alert('Escolha uma forma de pagamento.')
+   }
 });
 qs('.finish-text button').addEventListener('click', () => {
    qs('.finish-modal').style.display = 'none';
@@ -204,7 +212,7 @@ qs('.menu-mobile').addEventListener('click', () => {
    qs('.nav-mobile').classList.toggle('show-mobile');
 });
 qs('.cart-mobile').addEventListener('click', () => {
-   if(cart.length > 0){
+   if (cart.length > 0) {
       qs('aside').classList.toggle('show');
    }
 });
@@ -225,7 +233,8 @@ qs('.cancel-order').addEventListener('click', () => {
    updateCart();
    qs('.cancel-order').style.display = 'none';
    qs('.cart-finish').style.display = 'block';
-   qs('#home').scrollIntoView({behavior: 'smooth'});
+   qs('#home').scrollIntoView({ behavior: 'smooth' });
+   qs('.payments').style.display = 'none';
 })
 
 // pagamento
@@ -238,11 +247,11 @@ payments.map((item, index) => {
 
    // Adiciona o event listener ao novo elemento clonado
    paymentDiv.addEventListener('click', () => {
-       let paySelect = qs('.payment.paySelected');
-       if (paySelect) {
-           paySelect.classList.remove('paySelected');
-       }
-       paymentDiv.classList.add('paySelected');
+      let paySelect = qs('.payment.paySelected');
+      if (paySelect) {
+         paySelect.classList.remove('paySelected');
+      }
+      paymentDiv.classList.add('paySelected');
    });
 
    // Anexa o novo elemento ao contêiner
