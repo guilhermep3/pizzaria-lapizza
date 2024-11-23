@@ -5,6 +5,7 @@ let cart = [];
 let modalQt = 1;
 let modalKey = 0;
 let canAdd = true;
+let cartBtn = true;
 
 pizzas.map((item, index) => {
    let pizzaDiv = qs('.pizza').cloneNode(true);
@@ -153,16 +154,20 @@ function updateCart() {
          cartDiv.querySelector('.cart-item-nome').innerHTML = pizzaName;
          cartDiv.querySelector('.cart-item-qt').innerHTML = cart[i].qt;
          cartDiv.querySelector('.cart-item-qtmenos').addEventListener('click', () => {
-            if(cart[i].qt > 1){
-               cart[i].qt --;
-            } else {
-               cart.splice(i, 1);
+            if(cartBtn){
+               if(cart[i].qt > 1){
+                  cart[i].qt --;
+               } else {
+                  cart.splice(i, 1);
+               }
+               updateCart();
             }
-            updateCart();
          })
          cartDiv.querySelector('.cart-item-qtmais').addEventListener('click', () => {
-            cart[i].qt++
-            updateCart();
+            if(cartBtn){
+               cart[i].qt++
+               updateCart();
+            }
          });
 
          qs('.cart').append(cartDiv);
@@ -173,7 +178,9 @@ function updateCart() {
       qs('.subtotal span:last-child').innerHTML = `R$ ${subtotal.toFixed(2)}`;
       qs('.desconto span:last-child').innerHTML = `R$ ${desconto.toFixed(2)}`;
       qs('.total span:last-child').innerHTML = `R$ ${total.toFixed(2)}`;
-
+      qsa('.payment').forEach((item) => {
+         item.style.display = 'block';
+      })
    } else {
       qs('aside').classList.remove('show');
    }
@@ -207,14 +214,37 @@ qs('.menu-closer').addEventListener('click', () => {
 qs('.finish-text button').addEventListener('click', () => {
    closeModal();
    oderPlaced();
-   qs('#home').scrollIntoView({behavior: 'smooth'});
    canAdd = false;
+   cartBtn = false;
 });
 qs('.cancel-order').addEventListener('click', () => {
    cart = [];
    canAdd = true;
+   cartBtn = true;
    closeModal();
    updateCart();
    qs('.cancel-order').style.display = 'none';
    qs('.cart-finish').style.display = 'block';
+   qs('#home').scrollIntoView({behavior: 'smooth'});
 })
+
+// pagamento
+payments.map((item, index) => {
+   let paymentDiv = qs('.payment').cloneNode(true);
+   paymentDiv.setAttribute('data-key', index);
+   paymentDiv.setAttribute('title', item.name)
+   paymentDiv.querySelector('img').src = `src/images/payments/${item.img}`;
+   paymentDiv.querySelector('img').alt = item.name;
+
+   // Adiciona o event listener ao novo elemento clonado
+   paymentDiv.addEventListener('click', () => {
+       let paySelect = qs('.payment.paySelected');
+       if (paySelect) {
+           paySelect.classList.remove('paySelected');
+       }
+       paymentDiv.classList.add('paySelected');
+   });
+
+   // Anexa o novo elemento ao contêiner
+   qs('.payments').append(paymentDiv);
+});
