@@ -4,6 +4,7 @@ const qsa = (el) => document.querySelectorAll(el);
 let cart = [];
 let modalQt = 1;
 let modalKey = 0;
+let canAdd = true;
 
 pizzas.map((item, index) => {
    let pizzaDiv = qs('.pizza').cloneNode(true);
@@ -92,26 +93,29 @@ document.querySelector('.pizzaInfo--qtmais').addEventListener('click', () => {
       { style: 'currency', currency: 'BRL', });
 });
 
-// Card
+// Cart
 qs('.pizzaInfo--addButton').addEventListener('click', () => {
-
-   let size = document.querySelector('.pizzaInfo--size.selected').getAttribute('data-key');
-   let identifier = pizzas[modalKey].id + '@' + size;
-   let key = cart.findIndex((item) => item.identifier == identifier);
-
-   if (key > -1) {
-      cart[key].qt += modalKey;
+   if(canAdd){
+      let size = document.querySelector('.pizzaInfo--size.selected').getAttribute('data-key');
+      let identifier = pizzas[modalKey].id + '@' + size;
+      let key = cart.findIndex((item) => item.identifier == identifier);
+   
+      if (key > -1) {
+         cart[key].qt += modalKey;
+      } else {
+         cart.push({
+            id: pizzas[modalKey].id,
+            size,
+            qt: modalQt
+         });
+      };
+   
+      updateCart();
+      closeModal();
+      document.querySelector('#menu').scrollIntoView({behavior: 'smooth'});
    } else {
-      cart.push({
-         id: pizzas[modalKey].id,
-         size,
-         qt: modalQt
-      });
-   };
-
-   updateCart();
-   closeModal();
-   document.querySelector('#menu').scrollIntoView({behavior: 'smooth'});
+      alert('Pedido já feito, cancele antes de adicionar mais.')
+   }
 })
 
 function updateCart() {
@@ -175,6 +179,14 @@ function updateCart() {
    }
 };
 
+function oderPlaced(){
+   qs('.subtotal').style.display = 'none';
+   qs('.desconto').style.display = 'none';
+   qs('.finish-msg').style.display = 'flex';
+   qs('.cancel-order').style.display = 'block';
+   qs('.cart-finish').style.display = 'none';
+};
+
 document.querySelector('.cart-finish').addEventListener('click', () => {
    qs('.finish-modal').style.display = 'flex';
 });
@@ -191,9 +203,18 @@ qs('.cart-mobile').addEventListener('click', () => {
 });
 qs('.menu-closer').addEventListener('click', () => {
    qs('aside').classList.remove('show');
-})
+});
 qs('.finish-text button').addEventListener('click', () => {
-   qs('aside').classList.remove('show');
    closeModal();
+   oderPlaced();
    qs('#home').scrollIntoView({behavior: 'smooth'});
+   canAdd = false;
+});
+qs('.cancel-order').addEventListener('click', () => {
+   cart = [];
+   canAdd = true;
+   closeModal();
+   updateCart();
+   qs('.cancel-order').style.display = 'none';
+   qs('.cart-finish').style.display = 'block';
 })
