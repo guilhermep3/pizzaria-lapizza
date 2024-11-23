@@ -549,14 +549,13 @@ footer a:hover::after {
    transition-duration: 1s;
 }
 .payments{
-   display: flex;
+   display: none;
    justify-content: center;
    align-items: center;
    margin-top: 5px;
    gap: 7px;
 }
 .payment{
-   display: none;
    border: 1px solid transparent;
    cursor: pointer;
 }
