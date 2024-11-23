@@ -428,23 +428,23 @@ footer a:hover::after {
    display: inline-flex;
    background-color: #e4e4e4;
    border-radius: 10px;
-   height: 30px;
+   height: 35px;
 
 }
 .pizzaInfo--qtmenos, .pizzaInfo--qtmais {
    border: 0;
    background-color: transparent;
-   font-size: 18px;
+   font-size: 20px;
    outline: 0;
    cursor: pointer;
-   padding: 0px 10px;
+   padding: 0px 15px;
    color: #000;
 }
 .pizzaInfo--qt {
-   line-height: 30px;
-   font-size: 14px;
+   line-height: 36px;
+   font-size: 17px;
    font-weight: bold;
-   padding: 0px 5px;
+   padding: 0px 7px;
    color: #000;
 }
 .pizzaInfo--addButton {
@@ -478,7 +478,7 @@ footer a:hover::after {
 }
 .pizzaInfo--cancelMobileButton i{
    color: var(--main-color);
-   font-size: 30px;
+   font-size: 35px;
 }
 .finish-modal{
    position: fixed;
@@ -526,7 +526,7 @@ footer a:hover::after {
    padding: 15px 20px;
    border: none;
    border-radius: 15px;
-   background: linear-gradient(to right, #f37703, #e47814, #ee8f36, #e47814, #f37703);
+   background: linear-gradient(to right, #f37703, #eb7f1a, #ee8f36, #eb7f1a, #f37703);
    background-size: 250%;
    background-position: left;
    color: #fff;

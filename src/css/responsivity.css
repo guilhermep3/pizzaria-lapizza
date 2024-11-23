@@ -4,7 +4,6 @@
    }
    .pizza-img-modal img{
       height: 300px;
-      margin-right: 20px;
    }
    .pizzaInfo--addButton{
       padding: 15px;
@@ -65,21 +64,25 @@
    }
    .pizza-img-modal{
       flex: 0;
-      margin: 10px;
+      margin: 5px;
    }
    .pizzaInfo--cancelMobileButton{
       display: flex;
-      margin-top: 30px;
    }
    .pizzaInfo--cancelButton{
       display: none;
    }
    .pizzaWindowBody{
       flex-direction: column;
-      height: 100vh;
+   }
+   .pizzaWindowBody.modal {
+      padding: 10px 20px;
    }
    .pizza-img-modal img {
       height: 200px;
+   }
+   .pizzaInfo {
+      padding-bottom: 10px;
    }
    .pizzaInfo h1 {
       font-size: 25px;
@@ -135,6 +138,9 @@
    }
    .finish-text p{
       font-size: 16px;
+   }
+   .cart-item{
+      width: 100%;
    }
 }
 @media screen and (max-width: 440px){

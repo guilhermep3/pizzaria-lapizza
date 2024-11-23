@@ -186,9 +186,14 @@ qs('.menu-mobile').addEventListener('click', () => {
 });
 qs('.cart-mobile').addEventListener('click', () => {
    if(cart.length > 0){
-      qs('aside').classList.add('show');
+      qs('aside').classList.toggle('show');
    }
 });
 qs('.menu-closer').addEventListener('click', () => {
    qs('aside').classList.remove('show');
+})
+qs('.finish-text button').addEventListener('click', () => {
+   qs('aside').classList.remove('show');
+   closeModal();
+   qs('#home').scrollIntoView({behavior: 'smooth'});
 })
