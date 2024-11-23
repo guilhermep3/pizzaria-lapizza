@@ -74,11 +74,17 @@ aside.show{
    color: #000;
    margin: 5px 0;
 }
-.cart-finish{
+.finish-msg{
+   display: none;
+}
+.cart-finish, .cancel-order{
+   width: 100%;
    background-color: var(--main-color);
    color: #fff;
+   font-size: 17px;
    text-align: center;
    padding: 15px;
+   border: none;
    border-radius: 20px;
    margin-top: 10px;
    cursor: pointer;
@@ -86,4 +92,8 @@ aside.show{
 }
 .cart-finish:hover{
    filter: brightness(1.1);
+}
+.cancel-order{
+   display: none;
+   background-color: #f30303;
 }
