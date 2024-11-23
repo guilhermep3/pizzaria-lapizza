@@ -340,7 +340,7 @@ footer a:hover::after {
    transition: all 0.2s;
 }
 .pizzaWindowBody.modal {
-   padding: 10px 40px;
+   padding: 10px 40px 10px 10px;
 }
 .pizza-img-modal {
    flex: 1;
@@ -547,4 +547,24 @@ footer a:hover::after {
 .finish-text button:hover {
    background-position: right;
    transition-duration: 1s;
+}
+.payments{
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-top: 5px;
+   gap: 7px;
+}
+.payment{
+   display: none;
+   border: 1px solid transparent;
+   cursor: pointer;
+}
+.payment img{
+   width: 60px;
+   padding: 5px;
+}
+.paySelected{
+   border-radius: 10px;
+   border: 1px solid var(--main-color);
 }
