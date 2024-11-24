@@ -194,13 +194,30 @@ function oderPlaced() {
    qs('.cancel-order').style.display = 'block';
    qs('.cart-finish').style.display = 'none';
 };
+function handleFinish(){
+   qs('.loader-area').style.opacity = 0;
+   qs('.loader-area').style.display = 'flex';
+   setTimeout(() => {
+      qs('.loader-area').style.opacity = 1;
+   }, 100);
+   setTimeout(() => {
+      oderPlaced();
+   }, 3000);
+}
 
 document.querySelector('.cart-finish').addEventListener('click', () => {
    let havePS = Array.from(qsa('.payment')).some((item) => {
       return item.classList.contains('paySelected');
    });
    if (havePS) {
-      qs('.finish-modal').style.display = 'flex';
+      handleFinish();
+      setTimeout(() => {
+         qs('.finish-modal').style.display = 'flex';
+         qs('.loader-area').style.opacity = 0;
+         setTimeout(() => {
+            qs('.loader-area').style.display = 'none';
+         }, 200);
+      }, 3000);
    } else {
       alert('Escolha uma forma de pagamento.')
    }
@@ -247,11 +264,13 @@ payments.map((item, index) => {
 
    // Adiciona o event listener ao novo elemento clonado
    paymentDiv.addEventListener('click', () => {
-      let paySelect = qs('.payment.paySelected');
-      if (paySelect) {
-         paySelect.classList.remove('paySelected');
+      if(cartBtn){
+         let paySelect = qs('.payment.paySelected');
+         if (paySelect) {
+            paySelect.classList.remove('paySelected');
+         }
+         paymentDiv.classList.add('paySelected');
       }
-      paymentDiv.classList.add('paySelected');
    });
 
    // Anexa o novo elemento ao contêiner

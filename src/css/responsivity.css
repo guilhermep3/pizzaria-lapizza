@@ -130,8 +130,9 @@
       padding: 20px;
       margin: 10px;
    }
-   .finish-modal-area i {
-      margin: 0;
+   .finish-modal-area img {
+      width: 200px;
+      margin-right: 0;
    }
    .finish-text h1{
       font-size: 22px;

@@ -45,7 +45,7 @@ const pizzas = [
     "img": "pizzas/chocolate.png",
     "price": [14.5, 24.99, 29.99],
     "sizes": ["320g", "530g", "860g"],
-    "description": "Chocolate ao leite. meio amargo"
+    "description": "Chocolate ao leite. meio amargo com nutella"
   },
   {
     "id": 7,
