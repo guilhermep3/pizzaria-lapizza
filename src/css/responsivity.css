@@ -77,9 +77,10 @@
    }
    .pizzaWindowBody.modal {
       padding: 10px 20px;
+      margin: 0;
    }
    .pizza-img-modal img {
-      height: 200px;
+      height: 250px;
    }
    .pizzaInfo {
       padding-bottom: 10px;
@@ -133,6 +134,7 @@
    .finish-modal-area img {
       width: 200px;
       margin-right: 0;
+      margin-bottom: 10px;
    }
    .finish-text h1{
       font-size: 22px;
@@ -142,6 +144,17 @@
    }
    .cart-item{
       width: 100%;
+   }
+   .warning-card{
+      width: 90%;
+   }
+   .warning-card :first-child{
+      margin-bottom: 10px;
+      font-size: 14px;
+      border-bottom: 1px solid #ccc;
+   }
+   .warning-card :last-child{
+      font-size: 16px;
    }
 }
 @media screen and (max-width: 440px){

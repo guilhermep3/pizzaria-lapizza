@@ -219,7 +219,16 @@ document.querySelector('.cart-finish').addEventListener('click', () => {
          }, 200);
       }, 3000);
    } else {
-      alert('Escolha uma forma de pagamento.')
+      qs('.warning-card-area').style.display = 'flex';
+      setTimeout(() => {
+         qs('.warning-card-area').style.opacity = 1;
+      }, 100);
+      qs('.warning-card button').addEventListener('click', () => {
+         qs('.warning-card-area').style.opacity = 0;
+         setTimeout(() => {
+            qs('.warning-card-area').style.display = 'none';
+         }, 300);
+      })
    }
 });
 qs('.finish-text button').addEventListener('click', () => {
@@ -252,6 +261,9 @@ qs('.cancel-order').addEventListener('click', () => {
    qs('.cart-finish').style.display = 'block';
    qs('#home').scrollIntoView({ behavior: 'smooth' });
    qs('.payments').style.display = 'none';
+   qs('.finish-msg').style.display = 'none';
+   qs('.subtotal').style.display = 'flex';
+   qs('.desconto').style.display = 'flex';
 })
 
 // pagamento
